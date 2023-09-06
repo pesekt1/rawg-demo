@@ -2,6 +2,7 @@ import { Grid, GridItem } from "@chakra-ui/layout";
 import { Show } from "@chakra-ui/media-query";
 import "./App.css";
 import NavBar from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem gridArea="main" bg="orange">
-          main
+          <GameGrid />
         </GridItem>
       </Grid>
     </>
