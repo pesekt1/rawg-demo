@@ -1,6 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/layout";
 import { Show } from "@chakra-ui/media-query";
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         }}
       >
         <GridItem gridArea="nav" bg="tomato">
-          nav
+          <NavBar />
         </GridItem>
         <Show above="lg">
           <GridItem gridArea="aside" bg="green">
