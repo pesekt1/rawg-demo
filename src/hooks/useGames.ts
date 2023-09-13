@@ -23,18 +23,21 @@ interface GameRespose {
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     apiClient
       .get<GameRespose>("games")
       .then((response) => {
         setGames(response.data.results);
+        setIsLoading(false);
         console.log(response);
       })
       .catch((error) => setError(error.message));
   }, []);
 
-  return { games, error };
+  return { games, error, isLoading };
 };
 
 export default useGames;
