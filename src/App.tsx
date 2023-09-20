@@ -22,7 +22,7 @@ function App() {
           <NavBar />
         </GridItem>
         <Show above="lg">
-          <GridItem gridArea="aside">
+          <GridItem gridArea="aside" paddingLeft={5}>
             <GenreList />
           </GridItem>
         </Show>
