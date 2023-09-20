@@ -3,7 +3,7 @@ import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/getCroppedImageUrl";
 
 const GenreList = () => {
-  const { genres } = useGenres();
+  const { data: genres } = useGenres();
 
   return (
     <List>
