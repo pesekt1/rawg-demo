@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
+import { Genre } from "./useGenres";
 
 interface Response<T> {
   count: number;
   results: T[];
 }
 
-const useData = <T>(endpont: string) => {
+const useData = <T>(endpont: string, selectedGenre?: Genre | null) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +18,10 @@ const useData = <T>(endpont: string) => {
 
     setIsLoading(true);
     apiClient
-      .get<Response<T>>(endpont, { signal: controller.signal })
+      .get<Response<T>>(endpont, {
+        signal: controller.signal,
+        params: { genres: selectedGenre?.id },
+      })
       .then((response) => {
         setData(response.data.results);
         setIsLoading(false);
@@ -28,7 +32,7 @@ const useData = <T>(endpont: string) => {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [selectedGenre?.id]);
 
   return { data, error, isLoading };
 };
