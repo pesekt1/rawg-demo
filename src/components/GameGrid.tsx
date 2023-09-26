@@ -1,9 +1,10 @@
-import useGames, { Platform } from "../hooks/useGames";
 import { SimpleGrid } from "@chakra-ui/layout";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { Genre } from "../hooks/useGenres";
+import { Platform } from "../hooks/usePlatforms";
+import useGames from "../hooks/useGames";
 
 interface Props {
   selectedGenre: Genre | null;
